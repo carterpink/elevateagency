@@ -7,9 +7,9 @@
 # ─────────────────────────────────────────────────────────────
 backend:
   name: github
-  repo: OWNER/REPO            # TODO: e.g. samcarter/elevate-agency
+  repo: carterpink/elevateagency            # TODO: e.g. samcarter/elevate-agency
   branch: main
-  base_url: https://elevate-cms-auth.YOURNAME.workers.dev  # TODO: the OAuth worker URL
+  base_url: https://elevate-cms-auth.carterpink.workers.dev  # TODO: the OAuth worker URL
 
 # Roster photo uploads land here
 media_folder: "assets/img/roster"
