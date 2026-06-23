@@ -1,14 +1,17 @@
 ---
-name: Koa
-order: 1
-role: Selector
-base: Mooloolaba, QLD
-genres: [house, electronic]
+name: harry pr
+order: 2
+role: DJ
+base: noosa, qld
+genres:
+  - ukg
+  - dub
+  - hip-hop
 available: true
-tagline: Sun-soaked disco that doesn't quit.
-bio: "Koa came up playing beach bars and back rooms, and now opens and closes some of the Coast's busiest Friday nights. A crate-digger at heart with a knack for reading a floor."
-residency: Sundays at The Wharf, Mooloolaba
-signature: Long sunset-to-night disco sets
-socials: "@koa.dj · SoundCloud"
+tagline: swag swag swag
+bio: harry pr started just doing parties for fun - now he runs the coast
+residency: n/a
+signature: being the goat
+socials: '@harry.p.r Instagram'
 photo: /assets/img/roster/koa.jpg
 ---
