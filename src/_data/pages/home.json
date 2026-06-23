@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "title": "Elevate Agency, DJ & Artist Booking, Sunshine Coast",
+    "description": "Elevate is an emerging DJ & artist booking agency on the Sunshine Coast. We get local DJs more gigs, real rooms, real crowds, real momentum. Meet the roster.",
+    "ogTitle": "Elevate Agency, the artists moving the coast.",
+    "ogDescription": "An emerging DJ & artist booking agency on the Sunshine Coast. Real rooms, real crowds, real momentum."
+  },
+  "hero": {
+    "headline": "your come-up\nstarts",
+    "accent": "here.",
+    "sub": "Elevate is an emerging agency built to get local DJs more gigs, real rooms, real crowds, real momentum. You bring the sound, we open the doors.",
+    "ctaPrimary": { "label": "meet the roster", "url": "/roster/" },
+    "ctaSecondary": { "label": "how it works", "url": "/how-it-works/" }
+  },
+  "why": {
+    "heading": "No managers. No gatekeeping.\nNo upfront cost.",
+    "lede": "Just a clear path from your bedroom decks to a packed room, built by people who actually play the Coast.",
+    "cards": [
+      { "num": "01", "title": "No upfront fees", "body": "We only earn when you get paid. Your come-up isn't a cost, it's a partnership." },
+      { "num": "02", "title": "Coast-grown", "body": "Built on the Sunshine Coast, for the people who actually play it. We know the rooms and the promoters." },
+      { "num": "03", "title": "Real rooms", "body": "Clubs, bars, festivals and brand events, not just open decks. Bookings that build a real reputation." }
+    ]
+  },
+  "rosterTeaser": {
+    "heading": "the artists\nmoving the coast.",
+    "lede": "A growing crew of Sunshine Coast selectors, DJs and live acts, booked, backed and built up by Elevate.",
+    "linkLabel": "View full roster"
+  },
+  "cta": {
+    "heading": "on the decks, or behind them?",
+    "body": "Whether you want to book one of these names or join the roster yourself, it starts with one message.",
+    "primary": { "label": "start an enquiry", "url": "/contact/" },
+    "secondary": { "label": "meet the roster", "url": "/roster/" }
+  }
+}

@@ -1,0 +1,4 @@
+<nav class="mobile-menu" aria-label="Mobile">
+  {% for item in site.nav %}<a href="{{ item.url }}"><span class="idx">0{{ loop.index }}</span>{{ item.label }}</a>{% endfor %}
+  <a href="/contact/"><span class="idx">→</span>Book a DJ</a>
+</nav>

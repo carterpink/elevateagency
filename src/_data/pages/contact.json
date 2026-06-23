@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "title": "Contact, Elevate Agency",
+    "description": "Start an enquiry with Elevate Agency. Booking a DJ for your venue, or a DJ wanting on the roster? It starts with one message, no spam, just a reply from a real person.",
+    "ogTitle": "Contact, Elevate Agency",
+    "ogDescription": "It starts with one message. Book a DJ or join the roster."
+  },
+  "hero": {
+    "headline": "it starts with\none message.",
+    "lede": "Booking talent for a night, or a DJ looking to get on the roster? Tell us a little about you, no spam, just a reply from a real person."
+  },
+  "aside": {
+    "heading": "Prefer to reach out direct?",
+    "subtext": "We're Coast-based and reply fast."
+  },
+  "form": {
+    "note": "No spam, just a reply from a real person.",
+    "submitLabel": "send enquiry",
+    "success": "Thanks, your message is on its way. We'll be in touch shortly."
+  }
+}

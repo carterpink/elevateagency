@@ -1,0 +1,14 @@
+{
+  "name": "elevate-agency",
+  "version": "1.0.0",
+  "description": "Elevate Agency — DJ & artist booking, Sunshine Coast. Eleventy + Sveltia CMS.",
+  "private": true,
+  "scripts": {
+    "dev": "eleventy --serve --quiet",
+    "build": "eleventy",
+    "clean": "rm -rf _site"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

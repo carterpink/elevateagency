@@ -1,0 +1,39 @@
+---
+layout: base.njk
+permalink: /roster/
+pageKey: roster
+---
+{% import "macros.njk" as m %}
+{% set d = pages.roster %}
+
+<section class="pagehero theme-dark">
+  <div class="hero__grid"></div>
+  <div class="pagehero__glow"></div>
+  <div class="container">
+    <h1 class="display" data-hero style="--d:120">{{ d.hero.headline | nl2br | safe }}</h1>
+    <p class="lede" data-hero style="--d:260">{{ d.hero.lede }}</p>
+  </div>
+</section>
+
+<section class="section theme-dark" style="padding-top:clamp(2rem,4vw,3rem)">
+  <div class="container">
+    <div class="filters" data-filters aria-label="Filter by genre"></div>
+    <div class="roster-grid" data-roster>{% for dj in collections.djs %}{{ m.artistCard(dj, loop.index0) }}{% endfor %}</div>
+  </div>
+</section>
+
+<section class="section theme-darker">
+  <div class="container">
+    <div class="cta" data-reveal="scale">
+      <img class="cta__logo" src="/assets/img/logo-white.png" alt="">
+      <h2>{{ d.cta.heading }}</h2>
+      <p>{{ d.cta.body }}</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a class="btn btn--light btn--lg" href="{{ d.cta.primary.url }}" data-magnetic="0.25">{{ d.cta.primary.label }} {{ m.arrow(16) }}</a>
+        <a class="btn btn--ghost btn--lg" href="{{ d.cta.secondary.url }}" style="border-color:rgba(255,255,255,.35)">{{ d.cta.secondary.label }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ m.rosterJson(collections.djs) }}

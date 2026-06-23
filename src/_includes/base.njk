@@ -1,0 +1,37 @@
+{% set p = pages[pageKey] %}<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ p.meta.title }}</title>
+<meta name="description" content="{{ p.meta.description }}">
+<meta name="theme-color" content="#08080F">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/assets/img/favicon.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta property="og:title" content="{{ p.meta.ogTitle }}">
+<meta property="og:description" content="{{ p.meta.ogDescription }}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="/assets/img/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Hanken+Grotesk:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body{% if bodyAttr %} {{ bodyAttr | safe }}{% endif %}>
+
+{% include "preloader.njk" %}
+{% include "nav.njk" %}
+{% include "mobile-menu.njk" %}
+
+<main>
+{{ content | safe }}
+</main>
+
+{% include "footer.njk" %}
+
+<script src="/assets/js/roster.js"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>

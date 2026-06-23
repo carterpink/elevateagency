@@ -1,0 +1,15 @@
+<header class="nav">
+  <a class="brand" href="/" aria-label="{{ site.fullName }} home">
+    <img src="/assets/img/logo-white.png" alt="{{ site.fullName }}">
+    <span class="wordmark">{{ site.name }}</span>
+  </a>
+  <nav class="nav-links" aria-label="Primary">
+    {% for item in site.nav %}<a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>{% endfor %}
+  </nav>
+  <div class="nav-cta">
+    <a class="btn" href="/contact/" data-magnetic="0.25">Book a DJ
+      <svg class="arrow" width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M5 3h8v8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>

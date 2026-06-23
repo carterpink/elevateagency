@@ -1,0 +1,69 @@
+---
+layout: base.njk
+permalink: /how-it-works/
+pageKey: howitworks
+---
+{% import "macros.njk" as m %}
+{% set d = pages.howitworks %}
+
+<section class="pagehero theme-dark">
+  <div class="hero__grid"></div>
+  <div class="pagehero__glow"></div>
+  <div class="container">
+    <h1 class="display" data-hero style="--d:120">{{ d.hero.headline | nl2br | safe }}</h1>
+    <p class="lede" data-hero style="--d:260">{{ d.hero.lede }}</p>
+  </div>
+</section>
+
+<!-- STEPS (light) -->
+<section class="section theme-light">
+  <div class="container container--wide">
+    <div class="steps">
+      {% for s in d.steps %}<article class="step" data-reveal style="--i:{{ loop.index0 }}">
+        <span class="step__num">{{ s.num }}</span>
+        <div class="step__c">
+          <h3>{{ s.title }}</h3>
+          <p>{{ s.body }}</p>
+        </div>
+      </article>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- VALUE PROPS (dark) -->
+<section class="section theme-dark">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <h2 class="h-xl" style="margin-top:1rem">{{ d.valueProps.heading }}</h2>
+    </div>
+    <div class="grid grid-3" style="margin-top:clamp(2.5rem,5vw,4rem)">
+      {% for c in d.valueProps.cards %}<article class="card" data-reveal style="--i:{{ loop.index0 }}"><span class="card__glow"></span><span class="card__num">{{ c.label }}</span><h3>{{ c.title }}</h3><p>{{ c.body }}</p></article>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- DJs / VENUES split -->
+<section class="section theme-darker" id="venues">
+  <div class="container container--wide">
+    <div class="duo">
+      {% for panel in d.panels %}<article class="panel" data-reveal="{{ 'left' if loop.first else 'right' }}">
+        <img src="/assets/img/{{ panel.image }}.jpg" alt="">
+        <h3>{{ panel.title }}</h3>
+        <p>{{ panel.body }}</p>
+        <a class="btn btn--light" href="{{ panel.cta.url }}" data-magnetic="0.2">{{ panel.cta.label }} {{ m.arrow(16) }}</a>
+      </article>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section theme-dark">
+  <div class="container">
+    <div class="cta" data-reveal="scale">
+      <img class="cta__logo" src="/assets/img/logo-white.png" alt="">
+      <h2>{{ d.cta.heading }}</h2>
+      <p>{{ d.cta.body }}</p>
+      <a class="btn btn--light btn--lg" href="{{ d.cta.primary.url }}" data-magnetic="0.25">{{ d.cta.primary.label }} {{ m.arrow(16) }}</a>
+    </div>
+  </div>
+</section>

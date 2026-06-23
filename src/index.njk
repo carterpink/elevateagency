@@ -1,0 +1,92 @@
+---
+layout: base.njk
+permalink: /
+pageKey: home
+---
+{% import "macros.njk" as m %}
+{% set d = pages.home %}
+
+<!-- HERO -->
+<section class="hero theme-dark">
+  <div class="hero__bg" data-parallax="0.18"><img src="/assets/img/booth.jpg" alt="" aria-hidden="true"></div>
+  <div class="hero__grid"></div>
+  <div class="hero__glow"></div>
+  <img class="hero__float" src="/assets/img/logo-white.png" alt="" aria-hidden="true">
+  <div class="hero__inner">
+    <h1 class="display" data-hero style="--d:120">{{ d.hero.headline | nl2br | safe }} <span class="accent">{{ d.hero.accent }}</span></h1>
+    <p class="hero__sub" data-hero style="--d:260">{{ d.hero.sub }}</p>
+    <div class="hero__cta" data-hero style="--d:400">
+      <a class="btn btn--lg" href="{{ d.hero.ctaPrimary.url }}" data-magnetic="0.25">{{ d.hero.ctaPrimary.label }} {{ m.arrow(16) }}</a>
+      <a class="btn btn--ghost btn--lg" href="{{ d.hero.ctaSecondary.url }}">{{ d.hero.ctaSecondary.label }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee theme-darker" aria-label="Genres we move">
+  <div class="marquee__track">
+    {% for g in site.marquee %}<span{% if loop.index0 % 2 == 1 %} class="ghost"{% endif %}>{{ g }}<i class="dot"></i></span>{% endfor %}
+  </div>
+</div>
+
+<!-- WHY (light) -->
+<section class="section theme-light">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <h2 class="h-xl">{{ d.why.heading | nl2br | safe }}</h2>
+      <p class="lede">{{ d.why.lede }}</p>
+    </div>
+    <div class="grid grid-3" style="margin-top:clamp(2.5rem,5vw,4rem)">
+      {% for c in d.why.cards %}<article class="card" data-reveal style="--i:{{ loop.index0 }}">
+        <span class="card__glow"></span>
+        <span class="card__num">{{ c.num }}</span>
+        <h3>{{ c.title }}</h3>
+        <p>{{ c.body }}</p>
+      </article>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ROSTER TEASER (dark) -->
+<section class="section theme-dark">
+  <div class="container">
+    <div class="split" style="align-items:flex-end;margin-bottom:clamp(2rem,4vw,3rem)">
+      <div data-reveal>
+        <h2 class="h-xl" style="margin-top:1rem">{{ d.rosterTeaser.heading | nl2br | safe }}</h2>
+      </div>
+      <div data-reveal="right" style="padding-bottom:.4rem">
+        <p class="lede">{{ d.rosterTeaser.lede }}</p>
+        <a class="txtlink" href="/roster/" style="margin-top:1.2rem;color:var(--blue-300)">{{ d.rosterTeaser.linkLabel }}
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M5 3h8v8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="roster-grid" data-roster-featured>{% for dj in collections.djs | limit(4) %}{{ m.artistCard(dj, loop.index0) }}{% endfor %}</div>
+  </div>
+</section>
+
+<!-- STATS (light) -->
+<section class="section theme-light" style="padding-block:clamp(3rem,6vw,5rem)">
+  <div class="container">
+    <div class="stats">
+      {% for s in site.stats %}<div class="stat" data-reveal style="--i:{{ loop.index0 }}"><span class="stat__num" data-count="{{ s.value }}"{% if s.suffix %} data-suffix="{{ s.suffix }}"{% endif %}>0</span><span class="stat__label">{{ s.label }}</span></div>{% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CTA (dark) -->
+<section class="section theme-darker">
+  <div class="container">
+    <div class="cta" data-reveal="scale">
+      <img class="cta__logo" src="/assets/img/logo-white.png" alt="">
+      <h2>{{ d.cta.heading }}</h2>
+      <p>{{ d.cta.body }}</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a class="btn btn--light btn--lg" href="{{ d.cta.primary.url }}" data-magnetic="0.25">{{ d.cta.primary.label }} {{ m.arrow(16) }}</a>
+        <a class="btn btn--ghost btn--lg" href="{{ d.cta.secondary.url }}" style="border-color:rgba(255,255,255,.35)">{{ d.cta.secondary.label }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ m.rosterJson(collections.djs) }}

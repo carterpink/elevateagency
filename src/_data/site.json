@@ -1,0 +1,33 @@
+{
+  "name": "Elevate",
+  "fullName": "Elevate Agency",
+  "tagline": "the artists moving the coast.",
+  "blurb": "An emerging DJ & artist booking agency on the Sunshine Coast. We get local artists more gigs, and the rooms that fit them.",
+  "location": "Sunshine Coast, QLD",
+  "copyrightName": "Elevate Agency Australia",
+  "year": 2026,
+  "contact": {
+    "email": "hello@elevateagency.au",
+    "instagram": { "label": "@elevate.agency", "url": "https://instagram.com" },
+    "soundcloud": { "label": "/elevateagency", "url": "https://soundcloud.com" }
+  },
+  "genres": ["house", "ukg", "electronic", "underground", "dub", "speed garage", "techno", "live saxophone"],
+  "marquee": ["House", "UKG", "Electronic", "Underground", "Dub", "Speed Garage", "Techno", "Live Saxophone"],
+  "stats": [
+    { "value": 8, "suffix": "", "label": "Artists on the books" },
+    { "value": 8, "suffix": "", "label": "Genres covered" },
+    { "value": 24, "suffix": "+", "label": "Coast rooms & nights moved" }
+  ],
+  "nav": [
+    { "label": "home", "url": "/" },
+    { "label": "the roster", "url": "/roster/" },
+    { "label": "how it works", "url": "/how-it-works/" },
+    { "label": "contact", "url": "/contact/" }
+  ],
+  "footerAgency": [
+    { "label": "for djs", "url": "/how-it-works/" },
+    { "label": "for venues", "url": "/how-it-works/#venues" },
+    { "label": "book a dj", "url": "/contact/" },
+    { "label": "join the roster", "url": "/contact/" }
+  ]
+}

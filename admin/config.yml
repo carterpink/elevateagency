@@ -1,0 +1,225 @@
+# ─────────────────────────────────────────────────────────────
+# Elevate Agency — Sveltia CMS configuration
+# Edit content at /admin (login required). Saves commit to GitHub;
+# Cloudflare Pages rebuilds and the live site updates in ~1 min.
+#
+# BEFORE GOING LIVE, fill in the two TODO values below.
+# ─────────────────────────────────────────────────────────────
+backend:
+  name: github
+  repo: OWNER/REPO            # TODO: e.g. samcarter/elevate-agency
+  branch: main
+  base_url: https://elevate-cms-auth.YOURNAME.workers.dev  # TODO: the OAuth worker URL
+
+# Roster photo uploads land here
+media_folder: "assets/img/roster"
+public_folder: "/assets/img/roster"
+
+# Saving a draft commits to the branch above (single-author workflow)
+publish_mode: simple
+
+collections:
+  # ── Roster ────────────────────────────────────────────────
+  - name: roster
+    label: "Roster (DJs)"
+    label_singular: "DJ"
+    description: "Add, edit, reorder or remove the artists shown across the site."
+    folder: "src/roster"
+    create: true
+    delete: true
+    slug: "{{fields.name | lower}}"
+    identifier_field: name
+    summary: "{{fields.name}} — {{fields.role}}"
+    sortable_fields: [order, name]
+    fields:
+      - { name: name, label: "Name", widget: string }
+      - { name: order, label: "Sort order (low number = shown first)", widget: number, value_type: int, default: 99 }
+      - { name: role, label: "Role", widget: string, hint: "e.g. DJ, DJ / Producer, Live Act, Selector" }
+      - { name: base, label: "Based in", widget: string, hint: "Town, e.g. Noosa, QLD" }
+      - { name: genres, label: "Genres", widget: list, default: ["house"], hint: "Add one genre per item, lowercase (e.g. house, techno)" }
+      - { name: available, label: "Available for booking?", widget: boolean, default: true }
+      - { name: tagline, label: "Tagline", widget: string, hint: "One short line shown on the profile" }
+      - { name: bio, label: "Bio", widget: text }
+      - { name: residency, label: "Residency", widget: string, required: false, hint: "e.g. Sundays at The Wharf" }
+      - { name: signature, label: "Known for", widget: string, required: false }
+      - { name: socials, label: "Socials", widget: string, required: false, hint: "e.g. @name · SoundCloud" }
+      - { name: photo, label: "Photo", widget: image, hint: "Upload a portrait photo (3:4 works best)" }
+      - { name: body, label: "", widget: hidden, default: "" }
+
+  # ── Site-wide settings ────────────────────────────────────
+  - name: settings
+    label: "Site settings"
+    description: "Contact details, socials, genres, stats and navigation."
+    files:
+      - name: site
+        label: "Contact, socials & info"
+        file: "src/_data/site.json"
+        fields:
+          - { name: name, label: "Brand name (short)", widget: string }
+          - { name: fullName, label: "Full name", widget: string }
+          - { name: tagline, label: "Tagline", widget: string }
+          - { name: blurb, label: "Footer blurb", widget: text }
+          - { name: location, label: "Location", widget: string }
+          - { name: copyrightName, label: "Copyright name", widget: string }
+          - { name: year, label: "Copyright year", widget: number, value_type: int }
+          - name: contact
+            label: "Contact"
+            widget: object
+            fields:
+              - { name: email, label: "Email", widget: string }
+              - name: instagram
+                label: "Instagram"
+                widget: object
+                fields:
+                  - { name: label, label: "Handle", widget: string }
+                  - { name: url, label: "URL", widget: string }
+              - name: soundcloud
+                label: "SoundCloud"
+                widget: object
+                fields:
+                  - { name: label, label: "Handle", widget: string }
+                  - { name: url, label: "URL", widget: string }
+          - { name: genres, label: "Genre list (contact form dropdown)", widget: list }
+          - { name: marquee, label: "Marquee genres (home ticker)", widget: list }
+          - name: stats
+            label: "Stats (home)"
+            widget: list
+            fields:
+              - { name: value, label: "Number", widget: number, value_type: int }
+              - { name: suffix, label: "Suffix", widget: string, required: false }
+              - { name: label, label: "Label", widget: string }
+          - name: nav
+            label: "Navigation links"
+            widget: list
+            fields:
+              - { name: label, label: "Label", widget: string }
+              - { name: url, label: "URL", widget: string }
+          - name: footerAgency
+            label: "Footer — Agency links"
+            widget: list
+            fields:
+              - { name: label, label: "Label", widget: string }
+              - { name: url, label: "URL", widget: string }
+
+  # ── Page content ──────────────────────────────────────────
+  - name: pages
+    label: "Page content"
+    description: "Headlines, copy and SEO for each page."
+    files:
+      - name: home
+        label: "Home"
+        file: "src/_data/pages/home.json"
+        fields:
+          - { name: meta, label: "SEO", widget: object, collapsed: true, fields: [
+              { name: title, label: "Title", widget: string },
+              { name: description, label: "Description", widget: text },
+              { name: ogTitle, label: "Share title", widget: string },
+              { name: ogDescription, label: "Share description", widget: text } ] }
+          - name: hero
+            label: "Hero"
+            widget: object
+            fields:
+              - { name: headline, label: "Headline", widget: text, hint: "Use line breaks for stacked lines" }
+              - { name: accent, label: "Accent word (highlighted)", widget: string }
+              - { name: sub, label: "Sub-text", widget: text }
+              - { name: ctaPrimary, label: "Primary button", widget: object, fields: [ { name: label, widget: string }, { name: url, widget: string } ] }
+              - { name: ctaSecondary, label: "Secondary button", widget: object, fields: [ { name: label, widget: string }, { name: url, widget: string } ] }
+          - name: why
+            label: "Why section"
+            widget: object
+            fields:
+              - { name: heading, label: "Heading", widget: text }
+              - { name: lede, label: "Lede", widget: text }
+              - name: cards
+                label: "Cards"
+                widget: list
+                fields:
+                  - { name: num, label: "Number", widget: string }
+                  - { name: title, label: "Title", widget: string }
+                  - { name: body, label: "Body", widget: text }
+          - name: rosterTeaser
+            label: "Roster teaser"
+            widget: object
+            fields:
+              - { name: heading, label: "Heading", widget: text }
+              - { name: lede, label: "Lede", widget: text }
+              - { name: linkLabel, label: "Link label", widget: string }
+          - name: cta
+            label: "Closing CTA"
+            widget: object
+            fields:
+              - { name: heading, label: "Heading", widget: string }
+              - { name: body, label: "Body", widget: text }
+              - { name: primary, label: "Primary button", widget: object, fields: [ { name: label, widget: string }, { name: url, widget: string } ] }
+              - { name: secondary, label: "Secondary button", widget: object, fields: [ { name: label, widget: string }, { name: url, widget: string } ] }
+
+      - name: roster
+        label: "Roster page"
+        file: "src/_data/pages/roster.json"
+        fields:
+          - { name: meta, label: "SEO", widget: object, collapsed: true, fields: [
+              { name: title, widget: string }, { name: description, widget: text },
+              { name: ogTitle, widget: string }, { name: ogDescription, widget: text } ] }
+          - { name: hero, label: "Hero", widget: object, fields: [
+              { name: headline, label: "Headline", widget: text },
+              { name: lede, label: "Lede", widget: text } ] }
+          - { name: cta, label: "Closing CTA", widget: object, fields: [
+              { name: heading, widget: string }, { name: body, widget: text },
+              { name: primary, widget: object, fields: [ { name: label, widget: string }, { name: url, widget: string } ] },
+              { name: secondary, widget: object, fields: [ { name: label, widget: string }, { name: url, widget: string } ] } ] }
+
+      - name: howitworks
+        label: "How it works page"
+        file: "src/_data/pages/howitworks.json"
+        fields:
+          - { name: meta, label: "SEO", widget: object, collapsed: true, fields: [
+              { name: title, widget: string }, { name: description, widget: text },
+              { name: ogTitle, widget: string }, { name: ogDescription, widget: text } ] }
+          - { name: hero, label: "Hero", widget: object, fields: [
+              { name: headline, label: "Headline", widget: text }, { name: lede, label: "Lede", widget: text } ] }
+          - name: steps
+            label: "Steps"
+            widget: list
+            fields:
+              - { name: num, label: "Number", widget: string }
+              - { name: title, label: "Title", widget: string }
+              - { name: body, label: "Body", widget: text }
+          - name: valueProps
+            label: "Value props"
+            widget: object
+            fields:
+              - { name: heading, label: "Heading", widget: string }
+              - name: cards
+                label: "Cards"
+                widget: list
+                fields:
+                  - { name: label, label: "Label", widget: string }
+                  - { name: title, label: "Title", widget: string }
+                  - { name: body, label: "Body", widget: text }
+          - name: panels
+            label: "DJ / Venue panels"
+            widget: list
+            fields:
+              - { name: image, label: "Image (file name without folder)", widget: string, hint: "duo or backdrop" }
+              - { name: title, label: "Title", widget: string }
+              - { name: body, label: "Body", widget: text }
+              - { name: cta, label: "Button", widget: object, fields: [ { name: label, widget: string }, { name: url, widget: string } ] }
+          - { name: cta, label: "Closing CTA", widget: object, fields: [
+              { name: heading, widget: string }, { name: body, widget: text },
+              { name: primary, widget: object, fields: [ { name: label, widget: string }, { name: url, widget: string } ] } ] }
+
+      - name: contact
+        label: "Contact page"
+        file: "src/_data/pages/contact.json"
+        fields:
+          - { name: meta, label: "SEO", widget: object, collapsed: true, fields: [
+              { name: title, widget: string }, { name: description, widget: text },
+              { name: ogTitle, widget: string }, { name: ogDescription, widget: text } ] }
+          - { name: hero, label: "Hero", widget: object, fields: [
+              { name: headline, label: "Headline", widget: text }, { name: lede, label: "Lede", widget: text } ] }
+          - { name: aside, label: "Aside card", widget: object, fields: [
+              { name: heading, widget: string }, { name: subtext, widget: string } ] }
+          - { name: form, label: "Form", widget: object, fields: [
+              { name: note, label: "Reassurance note", widget: string },
+              { name: submitLabel, label: "Submit button", widget: string },
+              { name: success, label: "Success message", widget: text } ] }

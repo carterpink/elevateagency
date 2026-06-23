@@ -1,0 +1,30 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="/assets/img/logo-white.png" alt="{{ site.fullName }}">
+        <p>{{ site.blurb }}</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul>{% for item in site.nav %}<li><a href="{{ item.url }}">{{ item.label }}</a></li>{% endfor %}</ul>
+      </div>
+      <div>
+        <h4>Agency</h4>
+        <ul>{% for item in site.footerAgency %}<li><a href="{{ item.url }}">{{ item.label }}</a></li>{% endfor %}</ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="{{ site.contact.instagram.url }}" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="{{ site.contact.soundcloud.url }}" target="_blank" rel="noopener">SoundCloud</a></li>
+          <li><a href="mailto:{{ site.contact.email }}">Email us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© {{ site.year }} {{ site.copyrightName }} · {{ site.location }}</span>
+      <span>Built to elevate ↗</span>
+    </div>
+  </div>
+</footer>

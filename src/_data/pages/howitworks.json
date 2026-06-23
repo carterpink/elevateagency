@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "title": "How It Works, Elevate Agency",
+    "description": "Four steps to more gigs. No managers, no gatekeeping, no upfront cost, just a clear path from your bedroom decks to a packed room. For DJs and for venues.",
+    "ogTitle": "How It Works, Elevate Agency",
+    "ogDescription": "Four steps to more gigs. No managers, no gatekeeping, no upfront cost."
+  },
+  "hero": {
+    "headline": "four steps to\nmore gigs.",
+    "lede": "No managers, no gatekeeping, no upfront cost. Just a clear path from your bedroom decks to a packed room."
+  },
+  "steps": [
+    { "num": "01", "title": "Send your sound", "body": "Drop us a mix, a SoundCloud link or a couple of tracks. We want to hear how you read a floor, not your follower count. One message is all it takes to get on our radar." },
+    { "num": "02", "title": "We pitch you", "body": "We take your sound to the right rooms, the clubs, bars, festivals and brand events that actually fit your style. No spraying you at every open-decks night; the right slot, to the right crowd." },
+    { "num": "03", "title": "You play", "body": "You show up and do what you do. We handle the booking, the brief and the promoter relationship so you can focus on the set. Real rooms, real crowds, real momentum." },
+    { "num": "04", "title": "You grow", "body": "Every gig builds the next one. We only earn when you get paid, so we're backing your come-up the whole way, from first support slot to your own headline night." }
+  ],
+  "valueProps": {
+    "heading": "Built different, on purpose.",
+    "cards": [
+      { "label": "No upfront fees", "title": "Aligned with you", "body": "We only earn when you get paid. Your come-up isn't a cost." },
+      { "label": "Coast-grown", "title": "We know the rooms", "body": "Built on the Sunshine Coast, for the people who actually play it." },
+      { "label": "Real rooms", "title": "Bookings that matter", "body": "Clubs, bars, festivals and brand events, not just open decks." }
+    ]
+  },
+  "panels": [
+    { "image": "duo", "title": "I'm a DJ", "body": "Coast-grown, touring out. Get on the roster and let us turn your sound into a calendar full of real gigs.", "cta": { "label": "join the roster", "url": "/contact/" } },
+    { "image": "backdrop", "title": "I run a venue", "body": "Need the right act for the right night? Tell us the room and the vibe, we'll match you with talent that moves your floor.", "cta": { "label": "book talent", "url": "/contact/" } }
+  ],
+  "cta": {
+    "heading": "your come-up starts here.",
+    "body": "Send your sound. We'll do the rest. No spam, just a reply from a real person.",
+    "primary": { "label": "start an enquiry", "url": "/contact/" }
+  }
+}

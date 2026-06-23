@@ -1,0 +1,25 @@
+{# Reusable bits #}
+
+{% macro arrow(size=16) -%}
+<svg class="arrow" width="{{ size }}" height="{{ size }}" viewBox="0 0 16 16" fill="none"><path d="M3 13L13 3M5 3h8v8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+{%- endmacro %}
+
+{# Server-rendered roster card (matches the original markup 1:1) #}
+{% macro artistCard(dj, i) -%}
+<button class="artist" data-reveal data-slug="{{ dj.fileSlug }}" data-genres="{{ dj.data.genres | join(',') }}" style="--i:{{ i % 4 }}" aria-label="View {{ dj.data.name }}">
+  <span class="artist__media"><img src="{{ dj.data.photo }}" alt="{{ dj.data.name }}, {{ dj.data.role }}" loading="lazy"></span>
+  {% if dj.data.available %}<span class="artist__status"><span class="dot"></span>Available</span>{% else %}<span class="artist__status is-booked"><span class="dot"></span>Booked out</span>{% endif %}
+  <span class="artist__plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v12M1 7h12" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+  <span class="artist__body">
+    <span class="artist__role">{{ dj.data.role }}</span>
+    <span class="artist__name">{{ dj.data.name }}</span>
+    <span class="artist__base">{{ dj.data.base }}</span>
+    <span class="artist__tags">{% for g in dj.data.genres %}<span class="tag">{{ g }}</span>{% endfor %}</span>
+  </span>
+</button>
+{%- endmacro %}
+
+{# JSON payload the roster JS reads for the modal + filtering #}
+{% macro rosterJson(djs) -%}
+<script id="roster-data" type="application/json">[{% for dj in djs %}{"slug":"{{ dj.fileSlug }}","name":{{ dj.data.name | json | safe }},"role":{{ dj.data.role | json | safe }},"base":{{ dj.data.base | json | safe }},"genres":{{ dj.data.genres | json | safe }},"available":{{ dj.data.available | json | safe }},"tagline":{{ dj.data.tagline | json | safe }},"bio":{{ dj.data.bio | json | safe }},"residency":{{ dj.data.residency | json | safe }},"signature":{{ dj.data.signature | json | safe }},"socials":{{ dj.data.socials | json | safe }},"photo":{{ dj.data.photo | json | safe }}}{% if not loop.last %},{% endif %}{% endfor %}]</script>
+{%- endmacro %}

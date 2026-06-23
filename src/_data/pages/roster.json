@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "title": "The Roster, Elevate Agency",
+    "description": "Meet the Elevate roster, a growing crew of Sunshine Coast selectors, DJs and live acts across house, techno, UKG and more. Tap any name for the full profile.",
+    "ogTitle": "The Roster, Elevate Agency",
+    "ogDescription": "The artists moving the coast. Meet the Elevate roster."
+  },
+  "hero": {
+    "headline": "the artists\nmoving the coast.",
+    "lede": "A growing crew of Sunshine Coast selectors, DJs and live acts, booked, backed and built up by Elevate. Tap any name for the full profile."
+  },
+  "cta": {
+    "heading": "on the decks, or behind them?",
+    "body": "Whether you want to book one of these names or join the roster yourself, it starts with one message.",
+    "primary": { "label": "join the roster", "url": "/contact/" },
+    "secondary": { "label": "book a dj", "url": "/contact/" }
+  }
+}
